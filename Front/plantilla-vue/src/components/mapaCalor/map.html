@@ -1,0 +1,67 @@
+<div class="cuerpo wrapper">
+	<div class="cuerpo" id="pagMapa">
+		<div class="botones">
+			<ul class="nav nav-pills nav-justified">
+				<!--<li class="nav-item">
+					<a class="nav-link"@click="marcar('lunes')" v-bind:class = "{active: buttonActiveLunes}">Lunes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"@click="marcar('martes')" v-bind:class = "{active: buttonActiveMartes}">Martes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"@click="marcar('miercoles')" v-bind:class = "{active: buttonActiveMiercoles}">Miercoles</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " @click="marcar('jueves')" v-bind:class = "{active: buttonActiveJueves}">Jueves</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " @click="marcar('viernes')" v-bind:class = "{active: buttonActiveViernes}">Viernes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " @click="marcar('sabado')" v-bind:class = "{active: buttonActiveSabado}">Sabado</a>
+				</li>-->
+				<!--<li class="nav-item">
+					<a class="nav-link" @click="collapseLey" v-bind:class="{active: buttonActivePull}" style="float:right">Mostrar Leyenda</a>
+				</li>-->
+			</ul>
+		</div>
+		<div class="panel">
+
+			<div class="calendar panel">
+				<datepicker  placeholder="fecha inicial" v-model="fechaInicio" name="uniquename2"></datepicker>
+				<datepicker placeholder="fecha termino" v-model="fechaTermino" name="uniquename3"></datepicker>
+			</div>
+			<!-- <div class="calendar">
+				
+			</div>
+			 -->
+			<div class="horario">
+				<form action="">
+					<input type="radio" name="hour" v-model="horario" value="mañana"> Mañana (8-12)
+					<input type="radio" name="hour" v-model="horario" value="tarde"> Tarde (12 -17)
+					<input type="radio" name="hour" v-model="horario" value="noche"> Noche (18-24)
+				</form>
+			</div>
+			<div class="panel">
+
+				<Spinner v-if="cargando" style="margin-right: 30px"></Spinner>
+				<button type = "button" @click="loadDataMap" class = "btn btn-default btn-md myBtn">Generar</button>
+			
+			</div>
+			
+		</div>
+		<div id="map"></div>
+		<div id = "legend3" class = "container-fluid legend2" v-bind:style = "{ 'display' : display }">
+			<div id = "legendGradient">
+				
+			</div>
+			<div class = "significado">
+				<span class = "miInline" style = "padding-left:2px;padding-right: 140px;">Mala</span>
+				<span class = "miInline" style = "padding-right: 130px;">Moderada</span>
+				<span class = "miInline" style = "padding-right: 120px;">Buena</span>
+				<span class = "miInline pull-right">Excelente</span>
+			</div>
+
+		</div>
+	</div>
+</div>

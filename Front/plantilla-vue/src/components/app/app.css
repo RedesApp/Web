@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+#content{
+    height: 100%;
+	background: #002f6c;
+	padding: 0px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+body{
+    background-color: #002f6c;
+}

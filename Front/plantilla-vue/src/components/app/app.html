@@ -1,0 +1,5 @@
+<div class="wrapper" id="content">
+    <sidebar  @authenticated="setAuthenticated" v-if="this.authenticated" ></sidebar> 
+    <router-view @authenticated="setAuthenticated"></router-view>
+    <!-- @authenticated="setAuthenticated" -->
+</div>
