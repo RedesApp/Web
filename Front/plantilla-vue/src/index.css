@@ -1,3 +1,8 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
+
 a:hover{
     color: #6C0500;
     text-decoration: none;
@@ -11,5 +16,5 @@ a, a:focus{
 }
 
 body{
-    background-color: #6C0500 !important;
+	background-color: rgb(0, 153, 255) !important;
 }

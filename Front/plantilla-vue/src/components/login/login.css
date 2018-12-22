@@ -1,6 +1,23 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
+
+
 .miPanel{
     border-radius:0px !important;
     align-content: center !important;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.title{
+    padding-bottom:60px;	
+
+}
+
+.botoniniciar{
+	margin-top: 40px;
 }
 
 .miButton{
@@ -21,3 +38,11 @@ hr{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+
+
+.titulologin{
+	font-family: Open Sans;
+	font-size: 25px;
+}
+

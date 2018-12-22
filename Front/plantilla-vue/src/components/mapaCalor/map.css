@@ -1,3 +1,7 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
 #pagMapa{
 	padding: 5px;
 	min-height: 100vh;
@@ -17,8 +21,40 @@ html, body {
 	display: flex;
 	background: none;
 	justify-content: space-around;
+	font-family: Varela Round;
 	 
 }
+
+
+.calendar, .horario{
+	margin-top: 10px;
+}
+.botongenerar{
+	margin-top: 5px;
+	
+}
+.botongen{
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5)!important;
+	background-color: #EA7600 !important;
+	border-color:#EA7600 !important;
+
+}
+
+.botongen:hover{
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5)!important;
+	background-color: rgb(255, 140, 26) !important;
+	border-color:#EA7600 !important;
+
+}
+
+.fechainicio{
+	margin-right: 8px;
+}
+
+.paneltop{
+  background: rgb(0, 107, 179);
+}
+
 .botones{
 	padding-bottom:10px;
 
@@ -60,6 +96,8 @@ html, body {
 .myBtn{
 	border-radius:0px;
 	margin-left:10px;
+
+
 }
 
 #legendGradient{
@@ -75,4 +113,20 @@ html, body {
 .miInline{
 	display:inline-block;
 	color:white;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
 }

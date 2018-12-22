@@ -1,11 +1,14 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
 
 .glyphicon.glyphicon-resize-horizontal {
   font-size: 30px;
 }
 
 a:hover{
-    color: #EA7600;
     text-decoration: none;
     transition: all 0.3s;   
 }
@@ -14,13 +17,16 @@ a, a:focus{
     color: #fff;
     text-decoration: none;
     transition: all 0.3s;
+    font-family: Varela Round;
+    font-size: 18px;
 }
 
 #sidebar {
     min-width: 200px;
     max-width: 200px;
-    background: #002f6c;
+    background: rgb(0, 107, 179);
     transition: all 0.3s;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #sidebar.active {
@@ -71,7 +77,6 @@ a, a:focus{
 
 #sidebar .sidebar-header {
     padding-left: 10px;
-    background: #002f6c;
     margin-bottom: 10px;
 }
 
@@ -92,8 +97,9 @@ a, a:focus{
     display: block;
 }
 #sidebar ul li a:hover{
-    color: #EA7600;
-    background: #fff;
+    background: rgb(26, 163, 255);
+     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+     color:white;
 }
 #sidebar ul li a i {
     margin-right: 10px;
@@ -185,11 +191,13 @@ ul ul a {
     }
 }
 
-#sidebar div{
+.flechas{
   background: #EA7600;
 }
 
 .colorIcono{
 
     color: #EA7600;
+    text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
+

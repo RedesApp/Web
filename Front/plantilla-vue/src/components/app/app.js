@@ -11,7 +11,7 @@ export default {
     
   },
   mounted() {
-      if(sessionStorage.getItem('auth') != null) {
+      if(sessionStorage.getItem('auth') != null) { //cambiar esto!
         this.authenticated=true;
         this.$router.replace({ name: "inicio" })
       }
