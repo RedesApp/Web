@@ -4,22 +4,30 @@
             
             <div class = "col-md-12">
                     <div class = "panel panel-default miPanel">
-                        <div class = "panel-heading">
-                            <center><h4> ANÁLISIS REDES USACH</h4></center>
+                        <div class = "panel-heading col-md-12">
+                            <center class="title col-md-12">
+                              <img src = "../../img/diinf.png" class = "img-resposive" width="400"><br>
+                             <h4 class="titulologin col-md-12"> Análisis de Redes USACH</h4>
+
+                         
+                            </center>
                         </div>
                         <div class = "panel-body">
                             <div v-if="error" class="alert alert-danger text-center" role="alert">
                                     <strong>Error: Debe ingresar usuario y contraseña.</strong>
                             </div>
                             <div v-if="error2" class="alert alert-danger text-center" role="alert">
-                                    <strong>Error: El usuario o contraseña estan mal.</strong>
+                                    <strong>Error: El usuario o contraseña son incorrectos.</strong>
                             </div>
-                            <center     ><img src = "../../img/user.png" class = "img-resposive" style = "margin-bottom:10px; width: 120px;"></center>
-                            <!-- <div style="width:150px;margin: 0 auto;" class="g-signin2" @click="onSignIn"></div> -->
-                                <div id="google-signin-button"></div>
+                          
+                         <!--   <div style="width:150px;margin: 0 auto;" class="g-signin2" @click="onSignIn"></div> 
+ -->
+
+
+                            <center><div class="botoniniciar" id="google-signin-button"></div></center>
                         </div>
-                        <hr>
-                        <div class = "container-fluid" style = "margin-bottom: 30px">
+                      
+                      <!--   <div class = "container-fluid" style = "margin-bottom: 30px">
                             <div class = "row">
                                 <div class = " col-lg-4 col-md-4">
                                     <img src = "../../img/logo.png" class = "img-resposive" width="150">
@@ -29,8 +37,12 @@
                                     <img src = "../../img/logo_diinf2.png" class = "img-resposive" width="100" style = "margin-left:30px">
                                 </div>
                             </div>
-                        </div>
+                        </div>  -->
                     </div>    
+
+
+
+                </div>
             </div>
         </div>
     </div>
