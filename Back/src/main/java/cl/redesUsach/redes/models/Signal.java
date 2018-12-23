@@ -23,6 +23,10 @@ public class Signal implements Cloneable {
 
     private String estado;
 
+    private String lugar;
+
+
+
     private String velocidad;
     private String intensidad;
 
@@ -88,6 +92,14 @@ public class Signal implements Cloneable {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     public void setFecha(Date fecha) {
