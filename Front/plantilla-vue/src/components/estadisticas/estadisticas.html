@@ -11,11 +11,23 @@
 
 			<div class="horario">
 				<form action="">
-					<input type="radio" name="hour" v-model="horario" value="mañana"> Mañana (8-12)&nbsp;&nbsp;
+					<input type="radio" name="hour" v-model="horario" value="mañana"> Mañanas (8-12)&nbsp;&nbsp;
 					<input type="radio" name="hour" v-model="horario" value="tarde"> Tarde (12 -17)&nbsp;&nbsp;
 					<input type="radio" name="hour" v-model="horario" value="noche"> Noche (18-24)&nbsp;&nbsp;
 				</form>
 			</div>
+			<div class="dropdown dropsalas">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Puntos de interés
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+              	<!-- Esto debe traer las salas dinámicamente -->
+                <li><a href="#">Sala 519</a></li>
+                <li><a href="#">Sala 526</a></li>
+                <li><a href="#">Sala 517</a></li>
+              </ul>
+            </div>
 			
 			<div class="botongenerar">
 
@@ -23,8 +35,22 @@
 				<button type = "button" @click="loadDataMap"  class="btn btn-warning botongen">Generar</button>
 			
 			</div>
-			
 		</div>
+        
+        <center><div class="deberiairelchart" style="width: 500px; height:500px; margin-bottom:20px; background-color: black; color:white; text-align: center">
+        	AQUÍ DEBERIA ESTAR EL GRÁFICO :(
+        </div>
+
+		  	<h4 class="access"><b>Access point más cercano:  Sala x</b></h4>
+			<a href="#/dispositivos" class="btn btn-warning" role="button">Información de dispositivos</a><br><br><br>
+			<a href="#" class="btn btn-danger" role="button">Enviar Informe</a>
+
+      </center>
+
+			
+		
+
+
 		<div id="map"></div>
 		<div id = "legend3" class = "container-fluid legend2" v-bind:style = "{ 'display' : display }">
 			<div id = "legendGradient">

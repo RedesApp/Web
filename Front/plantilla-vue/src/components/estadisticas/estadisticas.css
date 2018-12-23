@@ -1,3 +1,7 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
 #pagMapa{
 	padding: 5px;
 	min-height: 100vh;
@@ -6,6 +10,9 @@
 }
 .cuerpo{
 	width: 100%;
+}
+.access{
+	font-family: Varela Round;
 }
 html, body {
 	height: 100%;
@@ -17,8 +24,10 @@ html, body {
 	display: flex;
 	background: none;
 	justify-content: space-around;
+	font-family: Varela Round;
 	 
 }
+
 
 .calendar, .horario{
 	margin-top: 10px;
@@ -93,10 +102,12 @@ html, body {
 .myBtn{
 	border-radius:0px;
 	margin-left:10px;
+
+
 }
 
 #legendGradient{
-	background: linear-gradient(to right,green,yellow, red);
+	background: linear-gradient(to right,red,yellow, green);
 	height: 25px;
 	border: 1px solid black;
 }
@@ -109,12 +120,19 @@ html, body {
 	display:inline-block;
 	color:white;
 }
-.circulo{
-	
-	margin-right: 8px;
-	margin-left: 15px;
-	padding: 0px 0px;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
 }
