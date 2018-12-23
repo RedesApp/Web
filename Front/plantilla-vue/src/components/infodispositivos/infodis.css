@@ -1,3 +1,7 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Signika', sans-serif;*/
 #pagMapa{
 	padding: 5px;
 	min-height: 100vh;
@@ -7,6 +11,9 @@
 .cuerpo{
 	width: 100%;
 }
+.access{
+	font-family: Varela Round;
+}
 html, body {
 	height: 100%;
 }
@@ -14,11 +21,32 @@ html, body {
 	height: 80%;
 }
 .panel{
-	display: flex;
-	background: none;
-	justify-content: space-around;
+
+
+	font-family: Varela Round;
+	 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	 
 }
+
+.dispositivos{
+	margin-top: 30px;
+	background-color: rgba(255,255,255,0.9)!important;
+	;
+}
+.titulodispositivos, .saladispositivos{
+	font-family: Varela Round;
+	font-size: 30px;
+	text-align: center;
+	color:white;
+	text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+
+}
+.saladispositivos{
+	color:orange;
+	text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+
+}
+
 
 .calendar, .horario{
 	margin-top: 10px;
@@ -93,10 +121,12 @@ html, body {
 .myBtn{
 	border-radius:0px;
 	margin-left:10px;
+
+
 }
 
 #legendGradient{
-	background: linear-gradient(to right,green,yellow, red);
+	background: linear-gradient(to right,red,yellow, green);
 	height: 25px;
 	border: 1px solid black;
 }
@@ -109,12 +139,19 @@ html, body {
 	display:inline-block;
 	color:white;
 }
-.circulo{
-	
-	margin-right: 8px;
-	margin-left: 15px;
-	padding: 0px 0px;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
 }

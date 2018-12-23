@@ -4,6 +4,8 @@ import Index from '../components/index/Index.vue';
 import Mapa from '../components/mapaCalor/Map.vue';
 import MapaC from '../components/mapaCalidad/MapCal.vue';
 import Login from '../components/login/login.vue';
+import Estadistica from '../components/estadisticas/Estadisticas.vue';
+import infodis from '../components/infodispositivos/Infodis.vue';
 
 Vue.use(VueRouter);
 
@@ -15,7 +17,10 @@ const router = new VueRouter({
         { path: '/index', alias: "/", name: "inicio", component:Mapa,meta: { requiresAuth: false } },
         { path: '/login', name: "login", component: Login,meta: { requiresLogin: true } },
         { path: '/', alias: '/',name:"dia", component: Mapa, meta: { requiresAuth:false } },
-        { path: '/mapacalidad', alias: '/calidad', component: MapaC, meta: { requiresAuth: false } }
+        { path: '/mapacalidad', alias: '/calidad', component: MapaC, meta: { requiresAuth: false } },
+        { path: '/estadisticas', component: Estadistica},
+        { path: '/dispositivos', component: infodis},
+        
     ]
 });
 

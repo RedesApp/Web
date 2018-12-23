@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 import router from './router/router.js'
 import GoogleAuth from 'vue-google-oauth'
+import Chart from 'chart.js';
 
 import App from './components/app/app.vue';
 
