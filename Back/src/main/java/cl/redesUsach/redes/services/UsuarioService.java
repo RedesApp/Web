@@ -4,6 +4,7 @@ package cl.redesUsach.redes.services;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -32,7 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import cl.redesUsach.redes.models.Signal;
 import cl.redesUsach.redes.models.Usuario;
+import cl.redesUsach.redes.repositories.SignalRepository;
 import cl.redesUsach.redes.repositories.UsuarioRepository;
 
 @CrossOrigin
@@ -42,7 +45,9 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+	@Autowired
+	private SignalRepository signalRepository;
+
 	@Transactional
 	@PostMapping
 	public Usuario saveUsuario(@RequestBody Usuario usuario) {
@@ -102,80 +107,7 @@ public class UsuarioService {
 		return usuario;
 	}
 
-	@GetMapping("/send")
-	@Transactional
-	public HttpStatus sendEmail() throws FileNotFoundException, DocumentException {
-		File archivo= new File("iTextHelloWorld.pdf");
-		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream(archivo));
-		 
-		document.open();
-		Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, BaseColor.BLACK);
-		Chunk chunk = new Chunk("Hello World", font);
-		document.add(chunk);
-		document.close();
-		
-		try {
-			// Propiedades de la conexión
-			
-
-			String to = "cuentatest111@gmail.com";
-			String from = "cuentatest111@gmail.com";
-			String pass = "cuentatest11123";
-			Properties props = new Properties();
-			props.setProperty("mail.smtp.host", "smtp.gmail.com");
-			props.setProperty("mail.smtp.starttls.enable", "true");
-			props.setProperty("mail.smtp.port", "587");
-			props.setProperty("mail.smtp.user", from);
-			props.setProperty("mail.smtp.auth", "true");
-
-			// Preparamos la sesion
-			Session session = Session.getDefaultInstance(props);
-			
-			BodyPart texto = new MimeBodyPart();
-            texto.setText("Texto del mensaje");
-
-            // Se compone el adjunto con la imagen
-            BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(
-                new DataHandler(new FileDataSource("iTextHelloWorld.pdf")));
-            adjunto.setFileName("archivo.pdf");
-			
-            
-         // Una MultiParte para agrupar texto e imagen.
-            MimeMultipart multiParte = new MimeMultipart();
-            multiParte.addBodyPart(texto);
-            multiParte.addBodyPart(adjunto);
-
-//			// Construimos el mensaje
-//			MimeMessage message = new MimeMessage(session);
-//			message.setFrom(new InternetAddress(from));
-//			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//			message.setSubject("Subject");
-//			message.setText("Mensaje");
-            
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-            message.setSubject("Hola");
-            message.setContent(multiParte);
-
-			// Lo enviamos.
-			Transport t = session.getTransport("smtp");
-			t.connect(from, pass);
-			t.sendMessage(message, message.getAllRecipients());
-
-			// Cierre.
-			t.close();
-			archivo.delete();
-			return HttpStatus.OK;
-
-		} catch (Exception e) {
-			archivo.delete();
-			e.printStackTrace();
-			return HttpStatus.BAD_GATEWAY;
-		}
-	}
+	
 	
 	
 

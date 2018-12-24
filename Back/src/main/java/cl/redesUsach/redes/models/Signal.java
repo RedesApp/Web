@@ -1,6 +1,5 @@
 package cl.redesUsach.redes.models;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,215 +8,221 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-@Document(collection="datos")
+@Document(collection = "datos")
 public class Signal implements Cloneable {
-    @Id
-    private String id;
-    private String latitud;
-    private String longitud;
-    private double weight;
+	@Id
+	private String id;
+	private String latitud;
+	private String longitud;
+	private double weight;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm",timezone="GMT-4")
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-    private Date fecha;
-    private String estado;
-    private String lugar;
-    private String marca;
-    private String modelo;
-    private String version;
-    private String velocidad;
-    private String intensidad;
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm", timezone = "GMT-4")
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	private Date fecha;
+	private String estado;
+	private String lugar;
+	private String marca;
+	private String modelo;
+	private String version;
+	private String velocidad;
+	private String intensidad;
+	private String sistemaOperativo;
 
+	public Signal clone() throws CloneNotSupportedException {
+		Signal clon = (Signal) super.clone();
+		return clon;
+	}
 
-    public Signal clone() throws CloneNotSupportedException{
-        Signal clon = (Signal) super.clone();
-        return clon;
-    }
+	public String getMarca() {
+		return marca;
+	}
 
-    public String getMarca() {
-        return marca;
-    }
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+	public String getModelo() {
+		return modelo;
+	}
 
-    public String getModelo() {
-        return modelo;
-    }
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+	public String getVersion() {
+		return version;
+	}
 
-    public String getVersion() {
-        return version;
-    }
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
+	public double getWeight() {
+		return weight;
+	}
 
-    public double getWeight(){
-        return weight;
-    }
-    public void setWeight(double weight){
-        this.weight=weight;
-    }
-    public String  getId() {
-        return id;
-    }
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
 
-    public String getLatitud() {
-        return latitud;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getLongitud() {
-        return longitud;
-    }
+	public String getLatitud() {
+		return latitud;
+	}
 
-    public void setLatitud(String latitud) {
-        this.latitud = latitud;
-    }
+	public String getLongitud() {
+		return longitud;
+	}
 
-    public void setLongitud(String longitud) {
-        this.longitud = longitud;
-    }
+	public void setLatitud(String latitud) {
+		this.latitud = latitud;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
+	}
 
-    public void setIntensidad(String intensidad) {
-        this.intensidad = intensidad;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getIntensidad() {
-        return intensidad;
-    }
+	public void setIntensidad(String intensidad) {
+		this.intensidad = intensidad;
+	}
 
-    public String getVelocidad() {
-        return velocidad;
-    }
+	public String getIntensidad() {
+		return intensidad;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public String getVelocidad() {
+		return velocidad;
+	}
 
-    public void setVelocidad(String velocidad) {
-        this.velocidad = velocidad;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public void setVelocidad(String velocidad) {
+		this.velocidad = velocidad;
+	}
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public String getLugar() {
-        return lugar;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
+	public String getLugar() {
+		return lugar;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
 
-    public static  ArrayList<Signal> promediar(ArrayList<Signal> coordenadas){
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-        ArrayList<Signal> promediados= new ArrayList<Signal>();
-        for (int i=0;i<coordenadas.size();i++) {
-            if(coordenadas.get(i) != null){
+	public String getSistemaOperativo() {
+		return sistemaOperativo;
+	}
 
-                System.out.println("**coordenadas:"+coordenadas.get(i).getLatitud()+","+coordenadas.get(i).longitud);
-                int contador=1;
-                double acumulador= Double.parseDouble(coordenadas.get(i).getVelocidad());
-                for (int j=i+1; j<coordenadas.size();j++) {
-                    if( coordenadas.get(j) != null && coordenadas.get(i).getLatitud().equals(coordenadas.get(j).getLatitud()) &&
-                            coordenadas.get(i).getLongitud().equals(coordenadas.get(j).getLongitud())) {
-                        acumulador+=Double.parseDouble(coordenadas.get(j).getVelocidad());
-                        coordenadas.set(j,null);
-                        contador++;
-                    }
+	public void setSistemaOperativo(String sistemaOperativo) {
+		this.sistemaOperativo = sistemaOperativo;
+	}
 
+	public static ArrayList<Signal> promediar(ArrayList<Signal> coordenadas) {
 
-                }
-                double promedio=acumulador/contador;
-                System.out.println("**promedio es:"+ promedio);
-                System.out.println("**contador es:"+contador);
-                String estado="UNKNOWN";
-                double peso=0.0;
+		ArrayList<Signal> promediados = new ArrayList<Signal>();
+		for (int i = 0; i < coordenadas.size(); i++) {
+			if (coordenadas.get(i) != null) {
 
-                if(promedio<150){
-                    estado="POOR";
-                    peso=0.2;
-                }
-                else if(promedio>=150 && promedio<550){
-                    estado="MODERATE";
-                    peso=0.5;
+				System.out.println(
+						"**coordenadas:" + coordenadas.get(i).getLatitud() + "," + coordenadas.get(i).longitud);
+				int contador = 1;
+				double acumulador = Double.parseDouble(coordenadas.get(i).getVelocidad());
+				for (int j = i + 1; j < coordenadas.size(); j++) {
+					if (coordenadas.get(j) != null
+							&& coordenadas.get(i).getLatitud().equals(coordenadas.get(j).getLatitud())
+							&& coordenadas.get(i).getLongitud().equals(coordenadas.get(j).getLongitud())) {
+						acumulador += Double.parseDouble(coordenadas.get(j).getVelocidad());
+						coordenadas.set(j, null);
+						contador++;
+					}
 
-                }
-                else if(promedio>=550 && promedio< 2000){
-                    estado="GOOD";
-                    peso=1;
-                }
-                else if(promedio>=2000){
-                    estado="EXCELLENT";
-                    peso=3;
-                }
-                System.out.println("**es:"+estado);
-                coordenadas.get(i).setVelocidad(String.valueOf(promedio));
-                coordenadas.get(i).setEstado(estado);
-                coordenadas.get(i).setWeight(peso);
-                promediados.add(coordenadas.get(i));
-            }
+				}
+				double promedio = acumulador / contador;
+				System.out.println("**promedio es:" + promedio);
+				System.out.println("**contador es:" + contador);
+				String estado = "UNKNOWN";
+				double peso = 0.0;
 
-        }
-        return promediados;
+				if (promedio < 150) {
+					estado = "POOR";
+					peso = 0.2;
+				} else if (promedio >= 150 && promedio < 550) {
+					estado = "MODERATE";
+					peso = 0.5;
 
-    }
+				} else if (promedio >= 550 && promedio < 2000) {
+					estado = "GOOD";
+					peso = 1;
+				} else if (promedio >= 2000) {
+					estado = "EXCELLENT";
+					peso = 3;
+				}
+				System.out.println("**es:" + estado);
+				coordenadas.get(i).setVelocidad(String.valueOf(promedio));
+				coordenadas.get(i).setEstado(estado);
+				coordenadas.get(i).setWeight(peso);
+				promediados.add(coordenadas.get(i));
+			}
 
-//    public static ArrayList<Signal> asignarPesoClon(ArrayList<Signal> coordenadas) throws CloneNotSupportedException {
-//        ArrayList<Signal> clonados= new ArrayList<Signal>();
-//        for (Signal coord: coordenadas) {
-//            int repeticion=1;
-//            if(coord.getEstado().equals("POOR")){
-//                coord.setWeight(0.2);
-//                //repeticion=2;
-//            }
-//            else if(coord.getEstado().equals("MODERATE")){
-//                coord.setWeight(0.5);
-//                //repeticion=8;
-//            }
-//            else if(coord.getEstado().equals("GOOD")){
-//                coord.setWeight(1);
-//                //repeticion=14;
-//            }
-//            else if(coord.getEstado().equals("EXCELLENT")){
-//                coord.setWeight(3);
-//                //repeticion=36;
-//            }
-//            else{
-//                repeticion=1;
-//            }
-//            System.out.println("**repeticion:"+repeticion);
-//            for(int i=0;i<repeticion;i++){
-//                clonados.add(coord.clone());
-//            }
-//
-//        }
-//        return clonados;
-//
-//
-//
-//    }
+		}
+		return promediados;
 
+	}
 
-
+	// public static ArrayList<Signal> asignarPesoClon(ArrayList<Signal>
+	// coordenadas) throws CloneNotSupportedException {
+	// ArrayList<Signal> clonados= new ArrayList<Signal>();
+	// for (Signal coord: coordenadas) {
+	// int repeticion=1;
+	// if(coord.getEstado().equals("POOR")){
+	// coord.setWeight(0.2);
+	// //repeticion=2;
+	// }
+	// else if(coord.getEstado().equals("MODERATE")){
+	// coord.setWeight(0.5);
+	// //repeticion=8;
+	// }
+	// else if(coord.getEstado().equals("GOOD")){
+	// coord.setWeight(1);
+	// //repeticion=14;
+	// }
+	// else if(coord.getEstado().equals("EXCELLENT")){
+	// coord.setWeight(3);
+	// //repeticion=36;
+	// }
+	// else{
+	// repeticion=1;
+	// }
+	// System.out.println("**repeticion:"+repeticion);
+	// for(int i=0;i<repeticion;i++){
+	// clonados.add(coord.clone());
+	// }
+	//
+	// }
+	// return clonados;
+	//
+	//
+	//
+	// }
 
 }
