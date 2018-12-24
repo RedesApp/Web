@@ -20,13 +20,11 @@ public class Signal implements Cloneable {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm",timezone="GMT-4")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date fecha;
-
     private String estado;
-
     private String lugar;
-
-
-
+    private String marca;
+    private String modelo;
+    private String version;
     private String velocidad;
     private String intensidad;
 
@@ -34,6 +32,30 @@ public class Signal implements Cloneable {
     public Signal clone() throws CloneNotSupportedException{
         Signal clon = (Signal) super.clone();
         return clon;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public double getWeight(){

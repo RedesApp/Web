@@ -10,5 +10,6 @@ import java.util.List;
 public interface SignalRepository extends MongoRepository<Signal,String> {
 
     List<Signal> findAllByFecha(Date fecha);
+    List<Signal> findAllByLugar(String lugar);
 
 }

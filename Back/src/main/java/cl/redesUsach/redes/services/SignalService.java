@@ -38,9 +38,16 @@ public class SignalService {
         return signalRepository.findAll();
     }
 
-    @GetMapping("/{calidad}")
-    public Iterable<Signal> getEspecificSignal(@PathVariable("calidad") String calidad){
-    	Iterable<Signal> señales= signalRepository.findAll();
+    @GetMapping("/{calidad}/{lugar}")
+    public Iterable<Signal> getEspecificSignal(@PathVariable("calidad") String calidad,
+                                               @PathVariable("lugar") String lugar){
+        Iterable<Signal> señales;
+        if(lugar.equals("todos")){
+            señales= signalRepository.findAll();
+        }
+        else{
+            señales= signalRepository.findAllByLugar(lugar);
+        }
         List<Signal> seleccionadas= new ArrayList<Signal>();
         for (Signal señal: señales) {
             if(señal.getEstado()!=null && señal.getEstado().equals(calidad)){
