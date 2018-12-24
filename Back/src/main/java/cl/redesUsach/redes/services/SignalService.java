@@ -4,7 +4,6 @@ import cl.redesUsach.redes.models.Lugar;
 import cl.redesUsach.redes.models.Signal;
 import cl.redesUsach.redes.repositories.LugarRepository;
 import cl.redesUsach.redes.repositories.SignalRepository;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -16,7 +15,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -79,47 +76,6 @@ public class SignalService {
 		}
 		return seleccionadas;
 	}
-
-	// @GetMapping("/estado/{lugar}")
-	// @ResponseStatus(HttpStatus.OK)
-	// public Map<String, Double> asdf(@PathVariable("lugar") String lugar) {
-	//
-	// Iterable<Signal> señales;
-	// if (lugar.equals("all")) {
-	// //Estadistica considerando todos los lugares
-	// señales = signalRepository.findAll();
-	// } else {
-	// //Estadistica de un lugar en especifico
-	// señales = signalRepository.findAllByLugar(lugar);
-	// }
-	// Double velocidadSumatoria = 0.0;
-	// Double intensidadSumatoria = 0.0;
-	// Double contador = 0.0;
-	//
-	// //List<Signal> seleccionadas = new ArrayList<Signal>();
-	// for (Signal señal : señales) {
-	// if(señal.getEstado() != null) {
-	// velocidadSumatoria = velocidadSumatoria +
-	// Double.parseDouble(señal.getVelocidad());
-	// intensidadSumatoria = intensidadSumatoria +
-	// Double.parseDouble(señal.getIntensidad());
-	//
-	// contador++;
-	// }
-	// }
-	// Double velocidadPromedio = velocidadSumatoria / contador;
-	// Double intensidadPromedio = intensidadSumatoria / contador;
-	//// List <Double> resultado = new ArrayList<Double>();
-	//// resultado.add(velocidadPromedio);
-	//// resultado.add(intensidadPromedio);
-	//
-	// HashMap<String, Double> resultado = new HashMap<>();
-	// resultado.put("velocidadPromedio", velocidadPromedio);
-	// resultado.put("intensidadPromedio", intensidadPromedio);
-	//
-	// return resultado;
-	//
-	// }
 
 	/*
 	 * @RequestMapping(value= "/fecha/{fecha}",method = RequestMethod.GET)
@@ -281,12 +237,12 @@ public class SignalService {
 			File archivo = new File("iTextHelloWorld.pdf");
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(archivo));
-			
+
 			document.open();
-			
+
 			Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, BaseColor.BLACK);
 			//
-			
+
 			for (Lugar ubicacion : lugares) {
 				Iterable<Signal> señal1;
 				señal1 = signalRepository.findAllByLugar(ubicacion.getNombre());
@@ -316,10 +272,8 @@ public class SignalService {
 				document.add(
 						new Paragraph("Intensidad Promedio: " + resultado.get("intensidadPromedio").toString(), font));
 
-
 			}
 			document.close();
-
 
 			try {
 				// Propiedades de la conexión
@@ -349,13 +303,6 @@ public class SignalService {
 				MimeMultipart multiParte = new MimeMultipart();
 				multiParte.addBodyPart(texto);
 				multiParte.addBodyPart(adjunto);
-
-				// // Construimos el mensaje
-				// MimeMessage message = new MimeMessage(session);
-				// message.setFrom(new InternetAddress(from));
-				// message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-				// message.setSubject("Subject");
-				// message.setText("Mensaje");
 
 				MimeMessage message = new MimeMessage(session);
 				message.setFrom(new InternetAddress(from));
@@ -408,15 +355,11 @@ public class SignalService {
 			document.open();
 			Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, BaseColor.BLACK);
 
-		
-
 			document.add(new Paragraph("Lugar: " + lugar, font));
 			document.add(new Paragraph("Velocidad Promedio: " + resultado.get("velocidadPromedio").toString(), font));
 
 			document.add(new Paragraph("Intensidad Promedio: " + resultado.get("intensidadPromedio").toString(), font));
 
-			// document.add(chunk2);
-			// document.add(chunk3);
 			document.close();
 
 			try {
@@ -447,13 +390,6 @@ public class SignalService {
 				MimeMultipart multiParte = new MimeMultipart();
 				multiParte.addBodyPart(texto);
 				multiParte.addBodyPart(adjunto);
-
-				// // Construimos el mensaje
-				// MimeMessage message = new MimeMessage(session);
-				// message.setFrom(new InternetAddress(from));
-				// message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-				// message.setSubject("Subject");
-				// message.setText("Mensaje");
 
 				MimeMessage message = new MimeMessage(session);
 				message.setFrom(new InternetAddress(from));
