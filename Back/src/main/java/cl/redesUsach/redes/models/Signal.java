@@ -14,6 +14,7 @@ public class Signal implements Cloneable {
 	private String id;
 	private String latitud;
 	private String longitud;
+	private double weight;
 
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm", timezone = "GMT-4")
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -128,12 +129,12 @@ public class Signal implements Cloneable {
 		this.fecha = fecha;
 	}
 
-	public String getSistemaOperativo() {
-		return sistemaOperativo;
+	public String getIdDevice() {
+		return id_device;
 	}
 
-	public void setSistemaOperativo(String sistemaOperativo) {
-		this.sistemaOperativo = sistemaOperativo;
+	public void setIdDevice(String id_device) {
+		this.id_device = id_device;
 	}
 
 	public static ArrayList<Signal> promediar(ArrayList<Signal> coordenadas) {
