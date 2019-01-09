@@ -26,7 +26,7 @@ public class Signal implements Cloneable {
 	private String version;
 	private String velocidad;
 	private String intensidad;
-	private String sistemaOperativo;
+	private String id_device;
 
 	public Signal clone() throws CloneNotSupportedException {
 		Signal clon = (Signal) super.clone();
@@ -129,12 +129,12 @@ public class Signal implements Cloneable {
 		this.fecha = fecha;
 	}
 
-	public String getSistemaOperativo() {
-		return sistemaOperativo;
+	public String getIdDevice() {
+		return id_device;
 	}
 
-	public void setSistemaOperativo(String sistemaOperativo) {
-		this.sistemaOperativo = sistemaOperativo;
+	public void setIdDevice(String id_device) {
+		this.id_device = id_device;
 	}
 
 	public static ArrayList<Signal> promediar(ArrayList<Signal> coordenadas) {
