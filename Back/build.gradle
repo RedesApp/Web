@@ -31,8 +31,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.json:json:20171018')
+	runtime("org.springframework.boot:spring-boot-starter-tomcat")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	runtime('mysql:mysql-connector-java')
 	compile group: 'javax.mail', name: 'mail', version: '1.5.0-b01'
 	compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13'
+	compile 'javax.xml.bind:jaxb-api:2.3.0'
+
 }

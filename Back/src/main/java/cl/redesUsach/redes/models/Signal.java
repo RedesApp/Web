@@ -14,7 +14,6 @@ public class Signal implements Cloneable {
 	private String id;
 	private String latitud;
 	private String longitud;
-	private double weight;
 
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm", timezone = "GMT-4")
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -26,7 +25,7 @@ public class Signal implements Cloneable {
 	private String version;
 	private String velocidad;
 	private String intensidad;
-	private String sistemaOperativo;
+	private String id_device;
 
 	public Signal clone() throws CloneNotSupportedException {
 		Signal clon = (Signal) super.clone();
