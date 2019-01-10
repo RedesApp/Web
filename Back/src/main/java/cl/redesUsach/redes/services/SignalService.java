@@ -4,6 +4,7 @@ import cl.redesUsach.redes.models.Lugar;
 import cl.redesUsach.redes.models.Signal;
 import cl.redesUsach.redes.repositories.LugarRepository;
 import cl.redesUsach.redes.repositories.SignalRepository;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -13,7 +14,8 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -75,6 +77,23 @@ public class SignalService {
 			}
 		}
 		return seleccionadas;
+	}
+
+	@GetMapping("/graficos")
+	public JSONArray obtenerDatos(){
+		JSONArray json = new JSONArray();
+		Iterable<Lugar> lugares = lugarRepository.findAll();
+		Iterable<Signal> señales = signalRepository.findAll();
+		for (Lugar lugar : lugares){
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("LUGAR", lugar.getNombre());
+			json.add(jsonObj);
+		}
+		/*jsonObj.put("variable", "pico");*/
+
+
+
+		return json;
 	}
 
 	/*
@@ -142,7 +161,7 @@ public class SignalService {
 	public Map<String, Object> getSignalsByIntervalo(@RequestBody String json)
 			throws JSONException, ParseException, CloneNotSupportedException {
 
-		JSONObject response = new JSONObject(json);
+		org.json.JSONObject response = new org.json.JSONObject(json);
 		String inicio = response.getString("fechaInicio");
 		String termino = response.getString("fechaTermino");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

@@ -19,6 +19,8 @@ public class Signal implements Cloneable {
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm", timezone = "GMT-4")
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date fecha;
+	private String dia;
+	private String bloque;
 	private String estado;
 	private String lugar;
 	private String marca;
@@ -115,6 +117,22 @@ public class Signal implements Cloneable {
 
 	public Date getFecha() {
 		return fecha;
+	}
+
+	public String getDia() {
+		return dia;
+	}
+
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+
+	public String getBloque() {
+		return bloque;
+	}
+
+	public void setBloque(String bloque) {
+		this.bloque = bloque;
 	}
 
 	public String getLugar() {
