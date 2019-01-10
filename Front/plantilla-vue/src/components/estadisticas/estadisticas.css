@@ -68,6 +68,7 @@ html, body {
 .btn-default:hover{
 	color: #fff;
 	background: #EA7600;
+	bottom-align:right;
 }
 
 .active {
