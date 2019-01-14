@@ -203,7 +203,7 @@ export default {
     getPointsExcellent: function () {
       console.log('funcionando');
       var i, linea, mapData;
-      this.$http.get('http://206.189.184.79:8091/redes/signals/Excellent')
+      this.$http.get('http://kamino.diinf.usach.cl/redes-0.0.1-SNAPSHOT/signals/EXCELENT/todos')
         .then(response => {
           mapData = response.body;
           // console.log("excellent", mapData);
@@ -223,7 +223,7 @@ export default {
 
     getPointsGood: function () {
       var i, linea, mapData;
-      this.$http.get('http://206.189.184.79:8091/redes/signals/Good')
+      this.$http.get('http://kamino.diinf.usach.cl/redes-0.0.1-SNAPSHOT/signals/GOOD/todos')
         .then(response => {
           mapData = response.body;
           for (i = 0; i < mapData.length; i++) {
@@ -257,7 +257,7 @@ export default {
       // console.log(intervalo);
       // console.log(this.horario)
       // se realiza peticion post al servidor para obtener los datos en el intervalo de fechas
-      this.$http.post('http://206.189.184.79:8091/redes/signals/fechas', intervalo)
+      this.$http.post('http://kamino.diinf.usach.cl/redes-0.0.1-SNAPSHOT/signals/fechas', intervalo)
       .then(response => {
         //dependiendo se la opcion seleccionda se accede a uno de los 3 arreglos con las coordenadas
           if(this.horario != ''){
