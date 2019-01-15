@@ -81,24 +81,100 @@ public class SignalService {
 
 	@GetMapping("/graficos")
 	public JSONArray obtenerDatos(){
-		JSONArray json = new JSONArray();
+		JSONArray jsonSalida = new JSONArray();
 		Iterable<Lugar> lugares = lugarRepository.findAll();
 		Iterable<Signal> señales = signalRepository.findAll();
+		int contadorM = 0;
+		int contadorT = 0;
+		int contadorN = 0;
+		int promedioM = 0;
+		int promedioT = 0;
+		int promedioN = 0;
+		int promedioCalidadM= 0;
+		int promedioCalidadT=0;
+		int promedioCalidadN=0;
 		for (Lugar lugar : lugares){
-			JSONObject jsonObj = new JSONObject();
-			jsonObj.put("LUGAR", lugar.getNombre());
-			json.add(jsonObj);
+			JSONObject jsonDataM = new JSONObject();
+			JSONObject jsonDataT = new JSONObject();
+			JSONObject jsonDataN = new JSONObject();
+			JSONObject jsonBloque = new JSONObject();
+			for (Signal señal : señales){
+				if(señal.getLugar().equals(lugar.getNombre())){
+					if(señal.getBloque().equals("Mañana")){
+						contadorM ++;
+						if(señal.getEstado().equals("EXCELENT")){
+							promedioM = promedioM + 4;
+						}
+						else if(señal.getEstado().equals("GOOD")){
+							promedioM = promedioM + 3;
+						}
+						else if(señal.getEstado().equals("MODERATE")){
+							promedioM = promedioM + 2;
+						}
+						else{
+							promedioM = promedioM + 1;
+						}
+					}
+					else if(señal.getBloque().equals("Tarde")){
+						contadorT++;
+						if(señal.getEstado().equals("EXCELENT")){
+							promedioT = promedioT + 4;
+						}
+						else if(señal.getEstado().equals("GOOD")){
+							promedioT = promedioT + 3;
+						}
+						else if(señal.getEstado().equals("MODERATE")){
+							promedioT += 2;
+						}
+						else{
+							promedioT += 1;
+						}
+					}
+					else{
+						contadorN++;
+						if(señal.getEstado().equals("EXCELENT")){
+							promedioN += 4;
+						}
+						else if(señal.getEstado().equals("GOOD")){
+							promedioN += 3;
+						}
+						else if(señal.getEstado().equals("MODERATE")){
+							promedioN += 2;
+						}
+						else{
+							promedioN += 1;
+						}
+					}
+
+				}
+			}
+
+			promedioCalidadM = promedioM/1;
+			promedioCalidadT = promedioT/1;
+			promedioCalidadN = promedioN/1;
+			jsonDataM.put("cantidad", contadorM);
+			jsonDataM.put("calidad", promedioCalidadM);
+			jsonDataT.put("cantidad", contadorT);
+			jsonDataT.put("calidad", promedioCalidadT);
+			jsonDataN.put("cantidad", contadorN);
+			jsonDataN.put("calidad", promedioCalidadN);
+			jsonBloque.put("mañana", jsonDataM);
+			jsonBloque.put("tarde", jsonDataT);
+			jsonBloque.put("noche", jsonDataN);
+			JSONObject jsonSala = new JSONObject();
+			jsonSala.put(lugar.getNombre(), jsonBloque);
+			contadorM = 0;
+			contadorT = 0;
+			contadorN = 0;
+			jsonSalida.add(jsonSala);
 		}
-		/*jsonObj.put("variable", "pico");*/
 
-
-
-		return json;
+		return jsonSalida;
 	}
 
 	/*
 	 * @RequestMapping(value= "/fecha/{fecha}",method = RequestMethod.GET)
-	 * 
+	 *
 	 * @ResponseBody public String getSignalsByDate(@PathVariable("fecha") String
 	 * fecha ){ SimpleDateFormat formatter = new
 	 * SimpleDateFormat("dd-MM-yyy HH:mm"); try{ Date temp=formatter.parse(fecha);
