@@ -84,9 +84,9 @@ public class SignalService {
 		JSONArray jsonSalida = new JSONArray();
 		Iterable<Lugar> lugares = lugarRepository.findAll();
 		Iterable<Signal> señales = signalRepository.findAll();
-		int contadorM = 0;
-		int contadorT = 0;
-		int contadorN = 0;
+		int contadorM = 1;
+		int contadorT = 1;
+		int contadorN = 1;
 		int promedioM = 0;
 		int promedioT = 0;
 		int promedioN = 0;
@@ -163,9 +163,9 @@ public class SignalService {
 			jsonBloque.put("noche", jsonDataN);
 			JSONObject jsonSala = new JSONObject();
 			jsonSala.put(lugar.getNombre(), jsonBloque);
-			contadorM = 0;
-			contadorT = 0;
-			contadorN = 0;
+			contadorM = 1;
+			contadorT = 1;
+			contadorN = 1;
 			jsonSalida.add(jsonSala);
 		}
 
