@@ -149,9 +149,9 @@ public class SignalService {
 				}
 			}
 
-			promedioCalidadM = promedioM/1;
-			promedioCalidadT = promedioT/1;
-			promedioCalidadN = promedioN/1;
+			promedioCalidadM = promedioM/contadorM;
+			promedioCalidadT = promedioT/contadorT;
+			promedioCalidadN = promedioN/contadorN;
 			jsonDataM.put("cantidad", contadorM);
 			jsonDataM.put("calidad", promedioCalidadM);
 			jsonDataT.put("cantidad", contadorT);
